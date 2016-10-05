@@ -12,7 +12,7 @@ html {
   position: relative;
   width: 100%;
   height: 100vh;
-  background-image: url(img/3.jpg);
+  background-image: url(img/5.jpg);
   background-size: cover;
   background-position: center;
   display: flex;
@@ -30,7 +30,7 @@ html {
 
 .title {
   color: #B10DC9;
-  font-family: Skia;
+  font-family: Skia, sans-serif;
   font-weight: normal;
 }
 

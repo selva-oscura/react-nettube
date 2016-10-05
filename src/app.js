@@ -1,13 +1,13 @@
-const React = require('react')
-const ReactDOM = require('react-dom')
+const React = require('react');
+const ReactDOM = require('react-dom');
+const ReactRouter = require('react-router');
+
+const Home = require('./Home');
 
 const App = () => (
-	<div className = 'app-container'>
-    	<div className='home-info'>
-			<h1 className='title'></h1>
-			<button className='browse-all'></button>
-    	</div>
-	</div>
+  <div className = 'app-container'>
+  	<Home />
+  </div>
 )
 
 ReactDOM.render(<App />, document.getElementById('app'))

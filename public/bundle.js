@@ -48,18 +48,14 @@
 
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(158);
+	var Home = __webpack_require__(159);
 
 	var App = function App() {
-		return React.createElement(
-			'div',
-			{ className: 'app-container' },
-			React.createElement(
-				'div',
-				{ className: 'home-info' },
-				React.createElement('h1', { className: 'title' }),
-				React.createElement('button', { className: 'browse-all' })
-			)
-		);
+	  return React.createElement(
+	    'div',
+	    { className: 'app-container' },
+	    React.createElement(Home, null)
+	  );
 	};
 
 	ReactDOM.render(React.createElement(App, null), document.getElementById('app'));
@@ -19801,6 +19797,37 @@
 	'use strict';
 
 	module.exports = __webpack_require__(3);
+
+/***/ },
+/* 159 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+
+	var Home = function Home() {
+	  return React.createElement(
+	    'div',
+	    { className: 'app-container' },
+	    React.createElement(
+	      'div',
+	      { className: 'home-info' },
+	      React.createElement(
+	        'h1',
+	        { className: 'title' },
+	        'Bash Videos'
+	      ),
+	      React.createElement(
+	        'button',
+	        { className: 'browse-all' },
+	        'Browse All'
+	      )
+	    )
+	  );
+	};
+
+	module.exports = Home;
 
 /***/ }
 /******/ ]);
