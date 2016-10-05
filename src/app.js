@@ -1,13 +1,13 @@
 const React = require('react')
 const ReactDOM = require('react-dom')
-const MyTitle = require('./MyTitle')
 
 const App = () => (
-	<div>
-		<MyTitle title='Props are great' color='rebeccapurple' />
-		<MyTitle title='Props are amazing' color='green' />
-		<MyTitle title='Props are spiffy' color='black' />
-	</div>	
+	<div className = 'app-container'>
+    	<div className='home-info'>
+			<h1 className='title'></h1>
+			<button className='browse-all'></button>
+    	</div>
+	</div>
 )
 
 ReactDOM.render(<App />, document.getElementById('app'))
