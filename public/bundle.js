@@ -46,6 +46,14 @@
 
 	'use strict';
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(158);
 	var ReactRouter = __webpack_require__(159);
@@ -61,14 +69,41 @@
 	var Home = __webpack_require__(216);
 	var Search = __webpack_require__(217);
 
-	var App = function App() {
-	  return React.createElement(
-	    Router,
-	    { history: hashHistory },
-	    React.createElement(Route, { path: '/', component: Home }),
-	    React.createElement(Route, { path: '/search', component: Search })
-	  );
-	};
+	var App = function (_React$Component) {
+		_inherits(App, _React$Component);
+
+		function App(props) {
+			_classCallCheck(this, App);
+
+			var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+
+			_this.state = {
+				searchText: "default text"
+			};
+			console.log("this.state", _this.state);
+			return _this;
+		}
+
+		_createClass(App, [{
+			key: 'render',
+			value: function render() {
+				var _this2 = this;
+
+				return React.createElement(
+					Router,
+					{ history: hashHistory },
+					React.createElement(Route, { path: '/', component: function component() {
+							return React.createElement(Home, null);
+						} }),
+					React.createElement(Route, { path: '/search', component: function component() {
+							return React.createElement(Search, { searchText: _this2.state.searchText });
+						} })
+				);
+			}
+		}]);
+
+		return App;
+	}(React.Component);
 
 	ReactDOM.render(React.createElement(App, null), document.getElementById('app'));
 
@@ -25179,13 +25214,18 @@
 
 	// console.log('data', data);
 
-	var Search = function Search() {
+	var Search = function Search(state) {
 		return React.createElement(
 			'div',
 			{ className: 'app-container' },
 			React.createElement(
 				'div',
 				{ className: 'container' },
+				React.createElement(
+					'h2',
+					null,
+					state.searchText
+				),
 				React.createElement(
 					'div',
 					{ className: 'shows' },
