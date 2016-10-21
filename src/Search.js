@@ -3,14 +3,22 @@ const ReactRouter = require('react-router');
 const { Link } = ReactRouter;
 import ShowCard from './ShowCard';
 import data from '../public/data';
-console.log('data', data);
 
 const Search = ({searchText, updateSearchText}) => {
 	console.log('searchText', searchText)
+	if(searchText.length>0){
+		var shows = data.shows.filter((show) => {
+			if(show.title.indexOf(searchText)>=0){
+				return show;
+			}
+		});
+	}else{
+		shows = data.shows;
+	}
 	return (
 	  <div className='app-container'>
 	  	<div className='container'>
-				{ searchText.length===0 ? <h2>Start your Search</h2> : null }
+				<h2>Find a Movie.....</h2>
 				<input 
 					type="text" 
 					placeholder="title or description"
@@ -21,7 +29,7 @@ const Search = ({searchText, updateSearchText}) => {
 				/>
 				{ searchText.length===0 ? null : <h2>Search results for {searchText}:</h2> }
 		  	<div className='shows'>
-		  		{data.shows.map((show) => ( 
+		  		{shows.map((show) => ( 
 		  			<ShowCard key={show.imdbID} show={show} />
 		  		))}
 		  	</div>
