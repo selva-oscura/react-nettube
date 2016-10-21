@@ -13,16 +13,18 @@ const Search = require('./Search');
 class App extends React.Component{	
 	constructor(props){
 		super(props);
-		this.state={
-			searchText: "default text"
-		}
-		console.log("this.state", this.state)
+		this.state= { searchText: "" };
 	}
+	updateSearchText(e){
+		// console.log('e.target.value',e.target.value);
+		this.setState({ searchText: e.target.value });
+	}
+
 	render(){
 		return (
 		  <Router history={hashHistory}>
 		    <Route path='/' component={() => <Home />} />
-		    <Route path='/search' component={() => <Search searchText={this.state.searchText} />} />
+		    <Route path='/search' component={() => <Search searchText={this.state.searchText} updateSearchText={this.updateSearchText.bind(this)} />} />
 		  </Router>
 		)
 	}
