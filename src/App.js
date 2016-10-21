@@ -16,7 +16,6 @@ class App extends React.Component{
 		this.state= { searchText: "" };
 	}
 	updateSearchText(e){
-		// console.log('e.target.value',e.target.value);
 		this.setState({ searchText: e.target.value });
 	}
 
