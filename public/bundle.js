@@ -77,14 +77,17 @@
 
 			var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
-			_this.state = {
-				searchText: "default text"
-			};
-			console.log("this.state", _this.state);
+			_this.state = { searchText: "" };
 			return _this;
 		}
 
 		_createClass(App, [{
+			key: 'updateSearchText',
+			value: function updateSearchText(e) {
+				// console.log('e.target.value',e.target.value);
+				this.setState({ searchText: e.target.value });
+			}
+		}, {
 			key: 'render',
 			value: function render() {
 				var _this2 = this;
@@ -96,7 +99,7 @@
 							return React.createElement(Home, null);
 						} }),
 					React.createElement(Route, { path: '/search', component: function component() {
-							return React.createElement(Search, { searchText: _this2.state.searchText });
+							return React.createElement(Search, { searchText: _this2.state.searchText, updateSearchText: _this2.updateSearchText.bind(_this2) });
 						} })
 				);
 			}
@@ -25212,9 +25215,21 @@
 	var ReactRouter = __webpack_require__(159);
 	var Link = ReactRouter.Link;
 
-	// console.log('data', data);
 
-	var Search = function Search(state) {
+	var Search = function Search(_ref) {
+		var searchText = _ref.searchText;
+		var updateSearchText = _ref.updateSearchText;
+
+		console.log('searchText', searchText);
+		if (searchText.length > 0) {
+			var shows = _data2.default.shows.filter(function (show) {
+				if (show.title.indexOf(searchText) >= 0) {
+					return show;
+				}
+			});
+		} else {
+			shows = _data2.default.shows;
+		}
 		return React.createElement(
 			'div',
 			{ className: 'app-container' },
@@ -25224,12 +25239,27 @@
 				React.createElement(
 					'h2',
 					null,
-					state.searchText
+					'Find a Movie.....'
+				),
+				React.createElement('input', {
+					type: 'text',
+					placeholder: 'title or description',
+					defaultValue: searchText,
+					onChange: function onChange(e) {
+						updateSearchText(e);
+					}
+				}),
+				searchText.length === 0 ? null : React.createElement(
+					'h2',
+					null,
+					'Search results for ',
+					searchText,
+					':'
 				),
 				React.createElement(
 					'div',
 					{ className: 'shows' },
-					_data2.default.shows.map(function (show) {
+					shows.map(function (show) {
 						return React.createElement(_ShowCard2.default, { key: show.imdbID, show: show });
 					})
 				)
