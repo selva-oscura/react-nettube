@@ -5,7 +5,6 @@ import ShowCard from './ShowCard';
 import data from '../public/data';
 
 const Search = ({searchText, updateSearchText}) => {
-	console.log('searchText', searchText)
 	var shows;
 	if(searchText.length>0){
 		shows = data.shows.filter((show) => {
@@ -22,16 +21,18 @@ const Search = ({searchText, updateSearchText}) => {
 	return (
 	  <div className='app-container'>
 	  	<div className='container'>
-				<h2>Find a Show.....</h2>
-				<input 
-					type="text" 
-					placeholder="title or description"
-					defaultValue={searchText}
-					onChange={(e) => {
-						updateSearchText(e)
-					}}
-				/>
-				{ searchText.length===0 ? null : <h2>Search results for {searchText}:</h2> }
+	  		<div className='search-container'>
+					<h2>Find a Show.....</h2>
+					<input 
+						type="text" 
+						placeholder="title or description"
+						defaultValue={searchText}
+						onChange={(e) => {
+							updateSearchText(e)
+						}}
+					/>
+					{ searchText.length===0 ? null : <h2>Search results for {searchText}:</h2> }
+	  		</div>
 		  	<div className='shows'>
 		  		{shows.map((show) => ( 
 		  			<ShowCard key={show.imdbID} show={show} />

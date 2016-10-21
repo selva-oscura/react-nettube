@@ -85,6 +85,10 @@ html {
   border-radius: 5px;
 }
 
+.search-container{
+  padding-bottom: 24px;
+}
+
 .shows {
   display: flex;
   flex-wrap: wrap;
