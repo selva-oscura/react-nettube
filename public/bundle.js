@@ -84,7 +84,6 @@
 		_createClass(App, [{
 			key: 'updateSearchText',
 			value: function updateSearchText(e) {
-				// console.log('e.target.value',e.target.value);
 				this.setState({ searchText: e.target.value });
 			}
 		}, {
@@ -25220,7 +25219,6 @@
 		var searchText = _ref.searchText;
 		var updateSearchText = _ref.updateSearchText;
 
-		console.log('searchText', searchText);
 		var shows;
 		if (searchText.length > 0) {
 			shows = _data2.default.shows.filter(function (show) {
@@ -25243,24 +25241,28 @@
 				'div',
 				{ className: 'container' },
 				React.createElement(
-					'h2',
-					null,
-					'Find a Show.....'
-				),
-				React.createElement('input', {
-					type: 'text',
-					placeholder: 'title or description',
-					defaultValue: searchText,
-					onChange: function onChange(e) {
-						updateSearchText(e);
-					}
-				}),
-				searchText.length === 0 ? null : React.createElement(
-					'h2',
-					null,
-					'Search results for ',
-					searchText,
-					':'
+					'div',
+					{ className: 'search-container' },
+					React.createElement(
+						'h2',
+						null,
+						'Find a Show.....'
+					),
+					React.createElement('input', {
+						type: 'text',
+						placeholder: 'title or description',
+						defaultValue: searchText,
+						onChange: function onChange(e) {
+							updateSearchText(e);
+						}
+					}),
+					searchText.length === 0 ? null : React.createElement(
+						'h2',
+						null,
+						'Search results for ',
+						searchText,
+						':'
+					)
 				),
 				React.createElement(
 					'div',
