@@ -25223,7 +25223,7 @@
 		console.log('searchText', searchText);
 		if (searchText.length > 0) {
 			var shows = _data2.default.shows.filter(function (show) {
-				if (show.title.indexOf(searchText) >= 0) {
+				if (show.title.indexOf(searchText) >= 0 || show.description.indexOf(searchText) >= 0) {
 					return show;
 				}
 			});
@@ -25239,7 +25239,7 @@
 				React.createElement(
 					'h2',
 					null,
-					'Find a Movie.....'
+					'Find a Show.....'
 				),
 				React.createElement('input', {
 					type: 'text',
