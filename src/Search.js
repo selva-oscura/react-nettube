@@ -10,6 +10,7 @@ const Search = ({searchText, updateSearchText}) => {
 	return (
 	  <div className='app-container'>
 	  	<div className='container'>
+				{ searchText.length===0 ? <h2>Start your Search</h2> : null }
 				<input 
 					type="text" 
 					placeholder="title or description"
@@ -18,6 +19,7 @@ const Search = ({searchText, updateSearchText}) => {
 						updateSearchText(e)
 					}}
 				/>
+				{ searchText.length===0 ? null : <h2>Search results for {searchText}:</h2> }
 		  	<div className='shows'>
 		  		{data.shows.map((show) => ( 
 		  			<ShowCard key={show.imdbID} show={show} />
