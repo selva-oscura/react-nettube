@@ -25221,10 +25221,15 @@
 		var updateSearchText = _ref.updateSearchText;
 
 		console.log('searchText', searchText);
+		var shows;
 		if (searchText.length > 0) {
-			var shows = _data2.default.shows.filter(function (show) {
-				var searchTextLowerCase = searchText.toLowerCase();
-				if (show.title.toLowerCase().indexOf(searchText) >= 0 || show.description.toLowerCase().indexOf(searchText) >= 0) {
+			shows = _data2.default.shows.filter(function (show) {
+				var searchTerms = searchText.toLowerCase().split(" ");
+				var showInfo = show.title + " " + show.description;
+				showInfo = showInfo.toLowerCase();
+				if (searchTerms.every(function (term) {
+					return showInfo.indexOf(term) >= 0;
+				})) {
 					return show;
 				}
 			});

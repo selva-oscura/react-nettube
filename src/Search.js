@@ -6,10 +6,13 @@ import data from '../public/data';
 
 const Search = ({searchText, updateSearchText}) => {
 	console.log('searchText', searchText)
+	var shows;
 	if(searchText.length>0){
-		var shows = data.shows.filter((show) => {
-			var searchTextLowerCase = searchText.toLowerCase();
-			if(show.title.toLowerCase().indexOf(searchText)>=0 || show.description.toLowerCase().indexOf(searchText)>=0){
+		shows = data.shows.filter((show) => {
+			let searchTerms = searchText.toLowerCase().split(" ");
+			let showInfo = show.title + " " + show.description;
+			showInfo = showInfo.toLowerCase();
+			if(searchTerms.every(term => (showInfo.indexOf(term)>=0))){
 				return show;
 			}
 		});
