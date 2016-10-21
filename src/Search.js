@@ -8,7 +8,8 @@ const Search = ({searchText, updateSearchText}) => {
 	console.log('searchText', searchText)
 	if(searchText.length>0){
 		var shows = data.shows.filter((show) => {
-			if(show.title.indexOf(searchText)>=0 || show.description.indexOf(searchText)>=0){
+			var searchTextLowerCase = searchText.toLowerCase();
+			if(show.title.toLowerCase().indexOf(searchText)>=0 || show.description.toLowerCase().indexOf(searchText)>=0){
 				return show;
 			}
 		});
