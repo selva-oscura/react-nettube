@@ -3,13 +3,21 @@ const ReactRouter = require('react-router');
 const { Link } = ReactRouter;
 import ShowCard from './ShowCard';
 import data from '../public/data';
-// console.log('data', data);
+console.log('data', data);
 
-const Search = (state) => {
+const Search = ({searchText, updateSearchText}) => {
+	console.log('searchText', searchText)
 	return (
 	  <div className='app-container'>
 	  	<div className='container'>
-				<h2>{state.searchText}</h2> 
+				<input 
+					type="text" 
+					placeholder="title or description"
+					defaultValue={searchText}
+					onChange={(e) => {
+						updateSearchText(e)
+					}}
+				/>
 		  	<div className='shows'>
 		  		{data.shows.map((show) => ( 
 		  			<ShowCard key={show.imdbID} show={show} />
