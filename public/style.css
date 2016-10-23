@@ -43,7 +43,6 @@ header .navLink:hover{
   position: relative;
   width: 100%;
   height: 100vh;
-  /*padding-top: 54px;*/
   background-size: cover;
   background-position: center;
   display: flex;
@@ -138,6 +137,10 @@ header .navLink:hover{
   border-radius: 4px;
   color: #333;
   text-decoration: none;
+}
+
+.show{
+  margin-bottom: 8px;
 }
 
 a > .show-card {
