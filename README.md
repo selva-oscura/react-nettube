@@ -1,6 +1,6 @@
-# Intro to React
+# NetTube
 
-Welcome to an intro to React! This is the barebones boilerplater of the project designed to help you get started.
+React-based Netflix/YouTube smash-up
 
 ## License
 
