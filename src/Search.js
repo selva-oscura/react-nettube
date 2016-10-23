@@ -1,6 +1,7 @@
-const React = require('react');
-const ReactRouter = require('react-router');
-const { Link } = ReactRouter;
+import React from 'react';
+// import ReactRouter from 'react-router';
+// const { Link } = ReactRouter;
+import { Link } from 'react-router';
 import ShowCard from './ShowCard';
 import data from '../public/data';
 
