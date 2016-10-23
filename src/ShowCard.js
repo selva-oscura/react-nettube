@@ -1,4 +1,4 @@
-const React = require('react');
+import React from 'react';
 
 const ShowCard = (props) => (
 	<div className='show' key={props.show.imdbID}>
