@@ -1,16 +1,16 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
-const ReactRouter = require('react-router');
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+// import ReactRouter from 'react-router';
 // const Router = ReactRouter.router;
 // const Route = ReactRouter.route;
 // const hashHistory = ReactRouter.hashHistory;
 /* destructuring to get the components in one line rather than the three above */
-const { Router, Route, hashHistory } = ReactRouter;
+import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router';
+import Layout from './Layout';
+import Home from './Home';
+import Search from './Search';
 
-const Home = require('./Home');
-const Search = require('./Search');
-
-class App extends React.Component{	
+class App extends Component{	
 	constructor(props){
 		super(props);
 		this.state= { searchText: "" };
@@ -21,10 +21,13 @@ class App extends React.Component{
 
 	render(){
 		return (
-		  <Router history={hashHistory}>
-		    <Route path='/' component={() => <Home />} />
-		    <Route path='/search' component={() => <Search searchText={this.state.searchText} updateSearchText={this.updateSearchText.bind(this)} />} />
-		  </Router>
+			<Router history={hashHistory}>
+				<Route path="/" component={Layout}>
+				  <IndexRoute component={Home} />
+				  <Route path='/search' component={() => <Search searchText={this.state.searchText} updateSearchText={this.updateSearchText.bind(this)} />} 
+				  />
+				</Route>
+			</Router>
 		)
 	}
 }
