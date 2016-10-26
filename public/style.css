@@ -20,10 +20,12 @@ header {
   width:100vw;
   background:#F0F0F0;
   z-index: 2;
+  margin:0px;
+  padding:0px;
 }
 
 header .navLink{
-  width: 50vw;
+  width: 50%;
   height: 54px;
   text-align: center;
   text-decoration: none;
@@ -31,6 +33,7 @@ header .navLink{
   color: #fafafa;
   display: inline-block;
   padding: 18px 0px;
+  margin:0px;
   text-transform: uppercase;
   transition: all 1s;
 }
