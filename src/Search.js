@@ -1,56 +1,50 @@
-import React from 'react';
-// import ReactRouter from 'react-router';
-// const { Link } = ReactRouter;
-import { Link } from 'react-router';
+import React, { Component } from 'react';
 import ShowCard from './ShowCard';
 import data from '../public/data';
 
-const Search = ({searchText, updateSearchText}) => {
-	var shows;
-	if(searchText.length>0){
-		shows = data.shows.filter((show) => {
-			let searchTerms = searchText.toLowerCase().split(" ");
-			let showInfo = show.title + " " + show.description;
-			showInfo = showInfo.toLowerCase();
-			if(searchTerms.every(term => (showInfo.indexOf(term)>=0))){
-				return show;
-			}
-		});
-	}else{
-		shows = data.shows;
-	}
-	shows = shows.sort(function(a,b){ 
-		if(a.title < b.title){
-			return -1;
+const Search = React.createClass({
+	getInitialState(){
+		return {
+			searchText: ""
 		}
-		if(a.title>b.title){
-			return 1;
-		}
-		return 0;
-	});
-	return (
-	  <div className='app-container'>
-	  	<div className='container'>
-	  		<div className='search-container'>
-					<h2>Find a Show.....</h2>
-					<input 
-						type="text" 
-						placeholder="title or description"
-						defaultValue={searchText}
-						onChange={(e) => {
-							updateSearchText(e)
-						}}
-					/>
-					{ searchText.length===0 ? null : <h2>Search results for {searchText}:</h2> }
-	  		</div>
-		  	<div className='shows'>
-		  		{shows.map((show) => ( 
-		  			<ShowCard key={show.imdbID} show={show} />
-		  		))}
+	},
+	updateSearchText(e){
+		this.setState({ searchText: e.target.value });
+	},
+	render(){
+		return (
+		  <div className='app-container'>
+		  	<div className='container'>
+		  		<div className='search-container'>
+						<h2>Find a Show.....</h2>
+						<input 
+							type="text" 
+							placeholder="title or description"
+							defaultValue={this.state.searchText}
+							onChange={(e) => {
+								this.updateSearchText(e)
+							}}
+						/>
+						{ this.state.searchText.length===0 ? null : <h2>Search results for {this.state.searchText}:</h2> }
+		  		</div>
+			  	<div className='shows'>
+			  		{data.shows.filter((show) => {
+							let searchTerms = this.state.searchText.toLowerCase().split(" ");
+							if(searchTerms.every(term => (`${show.title} ${show.description}`.toLowerCase().indexOf(term)>=0))){
+								return show;
+							}
+						}).sort(function(a,b){ 
+							if(a.title < b.title){ return -1 }
+							if(a.title>b.title){ return 1 }
+							return 0;
+						}).map((show) => ( 
+			  			<ShowCard key={show.imdbID} show={show} />
+			  		))}
+			  	</div>
 		  	</div>
-	  	</div>
-	  </div>
-	)
-};
+		  </div>
+		)
+	}
+});
 
 module.exports = Search;
