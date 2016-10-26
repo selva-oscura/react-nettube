@@ -25244,18 +25244,19 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// import ReactRouter from 'react-router';
-	// const { Link } = ReactRouter;
-	// import { Link } from 'react-router';
 	var Search = _react2.default.createClass({
 		displayName: 'Search',
 		getInitialState: function getInitialState() {
 			return {
-				searchText: ""
+				searchText: "",
+				searchTerms: []
 			};
 		},
 		updateSearchText: function updateSearchText(e) {
-			this.setState({ searchText: e.target.value });
+			this.setState({
+				searchText: e.target.value,
+				searchTerms: e.target.value.toLowerCase().split(" ")
+			});
 		},
 		render: function render() {
 			var _this = this;
@@ -25282,7 +25283,11 @@
 								_this.updateSearchText(e);
 							}
 						}),
-						this.state.searchText.length === 0 ? null : _react2.default.createElement(
+						this.state.searchText.length === 0 ? _react2.default.createElement(
+							'h2',
+							null,
+							'Showing all Shows'
+						) : _react2.default.createElement(
 							'h2',
 							null,
 							'Search results for ',
@@ -25294,9 +25299,7 @@
 						'div',
 						{ className: 'shows' },
 						_data2.default.shows.filter(function (show) {
-							var searchTerms = _this.state.searchText.toLowerCase().split(" ");
-							// let showInfo = `${show.title} ${show.description}`.toLowerCase();
-							if (searchTerms.every(function (term) {
+							if (_this.state.searchTerms.every(function (term) {
 								return (show.title + ' ' + show.description).toLowerCase().indexOf(term) >= 0;
 							})) {
 								return show;

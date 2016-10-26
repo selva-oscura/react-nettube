@@ -5,11 +5,15 @@ import data from '../public/data';
 const Search = React.createClass({
 	getInitialState(){
 		return {
-			searchText: ""
+			searchText: "",
+			searchTerms: [],
 		}
 	},
 	updateSearchText(e){
-		this.setState({ searchText: e.target.value });
+		this.setState({ 
+			searchText: e.target.value,
+			searchTerms: e.target.value.toLowerCase().split(" "),
+		});
 	},
 	render(){
 		return (
@@ -25,12 +29,11 @@ const Search = React.createClass({
 								this.updateSearchText(e)
 							}}
 						/>
-						{ this.state.searchText.length===0 ? null : <h2>Search results for {this.state.searchText}:</h2> }
+						{ this.state.searchText.length===0 ? <h2>Showing all Shows</h2> : <h2>Search results for {this.state.searchText}:</h2> }
 		  		</div>
 			  	<div className='shows'>
 			  		{data.shows.filter((show) => {
-							let searchTerms = this.state.searchText.toLowerCase().split(" ");
-							if(searchTerms.every(term => (`${show.title} ${show.description}`.toLowerCase().indexOf(term)>=0))){
+							if(this.state.searchTerms.every(term => (`${show.title} ${show.description}`.toLowerCase().indexOf(term)>=0))){
 								return show;
 							}
 						}).sort(function(a,b){ 
