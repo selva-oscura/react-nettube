@@ -46,8 +46,6 @@
 
 	'use strict';
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -72,58 +70,23 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	// import ReactRouter from 'react-router';
 	// const Router = ReactRouter.router;
 	// const Route = ReactRouter.route;
 	// const hashHistory = ReactRouter.hashHistory;
 	/* destructuring to get the components in one line rather than the three above */
-
-
-	var App = function (_Component) {
-		_inherits(App, _Component);
-
-		function App(props) {
-			_classCallCheck(this, App);
-
-			var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
-
-			_this.state = { searchText: "" };
-			return _this;
-		}
-
-		_createClass(App, [{
-			key: 'updateSearchText',
-			value: function updateSearchText(e) {
-				this.setState({ searchText: e.target.value });
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				var _this2 = this;
-
-				return _react2.default.createElement(
-					_reactRouter.Router,
-					{ history: _reactRouter.hashHistory },
-					_react2.default.createElement(
-						_reactRouter.Route,
-						{ path: '/', component: _Layout2.default },
-						_react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default }),
-						_react2.default.createElement(_reactRouter.Route, { path: '/search', component: function component() {
-								return _react2.default.createElement(_Search2.default, { searchText: _this2.state.searchText, updateSearchText: _this2.updateSearchText.bind(_this2) });
-							}
-						})
-					)
-				);
-			}
-		}]);
-
-		return App;
-	}(_react.Component);
+	var App = function App() {
+		return _react2.default.createElement(
+			_reactRouter.Router,
+			{ history: _reactRouter.hashHistory },
+			_react2.default.createElement(
+				_reactRouter.Route,
+				{ path: '/', component: _Layout2.default },
+				_react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default }),
+				_react2.default.createElement(_reactRouter.Route, { path: '/search', component: _Search2.default })
+			)
+		);
+	};
 
 	_reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('app'));
 
@@ -25184,12 +25147,6 @@
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -25198,61 +25155,33 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	var Layout = function Layout(props) {
+		return _react2.default.createElement(
+			'div',
+			{ className: 'wholeEnchilada' },
+			_react2.default.createElement(
+				'header',
+				null,
+				_react2.default.createElement(
+					_reactRouter.Link,
+					{ className: 'navLink', to: '/' },
+					'Home'
+				),
+				_react2.default.createElement(
+					_reactRouter.Link,
+					{ className: 'navLink', to: '/search' },
+					'Search'
+				)
+			),
+			_react2.default.createElement(
+				'article',
+				null,
+				props.children
+			)
+		);
+	};
 
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	// import ReactDOM from 'react-dom';
-	// import ReactRouter from 'react-router';
-	// const Router = ReactRouter.router;
-	// const Route = ReactRouter.route;
-	// const hashHistory = ReactRouter.hashHistory;
-	/* destructuring to get the components in one line rather than the multiple above */
-
-
-	var Layout = function (_Component) {
-		_inherits(Layout, _Component);
-
-		function Layout() {
-			_classCallCheck(this, Layout);
-
-			return _possibleConstructorReturn(this, (Layout.__proto__ || Object.getPrototypeOf(Layout)).apply(this, arguments));
-		}
-
-		_createClass(Layout, [{
-			key: 'render',
-			value: function render() {
-				return _react2.default.createElement(
-					'div',
-					{ className: 'wholeEnchilada' },
-					_react2.default.createElement(
-						'header',
-						null,
-						_react2.default.createElement(
-							_reactRouter.Link,
-							{ className: 'navLink', to: '/' },
-							'Home'
-						),
-						_react2.default.createElement(
-							_reactRouter.Link,
-							{ className: 'navLink', to: '/search' },
-							'Search'
-						)
-					),
-					_react2.default.createElement(
-						'article',
-						null,
-						this.props.children
-					)
-				);
-			}
-		}]);
-
-		return Layout;
-	}(_react.Component);
-
-	exports.default = Layout;
+	module.exports = Layout;
 
 /***/ },
 /* 217 */
@@ -25305,8 +25234,6 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactRouter = __webpack_require__(159);
-
 	var _ShowCard = __webpack_require__(219);
 
 	var _ShowCard2 = _interopRequireDefault(_ShowCard);
@@ -25317,77 +25244,79 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var Search = function Search(_ref) {
-		var searchText = _ref.searchText;
-		var updateSearchText = _ref.updateSearchText;
-
-		var shows;
-		if (searchText.length > 0) {
-			shows = _data2.default.shows.filter(function (show) {
-				var searchTerms = searchText.toLowerCase().split(" ");
-				var showInfo = show.title + " " + show.description;
-				showInfo = showInfo.toLowerCase();
-				if (searchTerms.every(function (term) {
-					return showInfo.indexOf(term) >= 0;
-				})) {
-					return show;
-				}
-			});
-		} else {
-			shows = _data2.default.shows;
-		}
-		shows = shows.sort(function (a, b) {
-			if (a.title < b.title) {
-				return -1;
-			}
-			if (a.title > b.title) {
-				return 1;
-			}
-			return 0;
-		});
-		return _react2.default.createElement(
-			'div',
-			{ className: 'app-container' },
-			_react2.default.createElement(
-				'div',
-				{ className: 'container' },
-				_react2.default.createElement(
-					'div',
-					{ className: 'search-container' },
-					_react2.default.createElement(
-						'h2',
-						null,
-						'Find a Show.....'
-					),
-					_react2.default.createElement('input', {
-						type: 'text',
-						placeholder: 'title or description',
-						defaultValue: searchText,
-						onChange: function onChange(e) {
-							updateSearchText(e);
-						}
-					}),
-					searchText.length === 0 ? null : _react2.default.createElement(
-						'h2',
-						null,
-						'Search results for ',
-						searchText,
-						':'
-					)
-				),
-				_react2.default.createElement(
-					'div',
-					{ className: 'shows' },
-					shows.map(function (show) {
-						return _react2.default.createElement(_ShowCard2.default, { key: show.imdbID, show: show });
-					})
-				)
-			)
-		);
-	};
 	// import ReactRouter from 'react-router';
 	// const { Link } = ReactRouter;
+	// import { Link } from 'react-router';
+	var Search = _react2.default.createClass({
+		displayName: 'Search',
+		getInitialState: function getInitialState() {
+			return {
+				searchText: ""
+			};
+		},
+		updateSearchText: function updateSearchText(e) {
+			this.setState({ searchText: e.target.value });
+		},
+		render: function render() {
+			var _this = this;
 
+			return _react2.default.createElement(
+				'div',
+				{ className: 'app-container' },
+				_react2.default.createElement(
+					'div',
+					{ className: 'container' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'search-container' },
+						_react2.default.createElement(
+							'h2',
+							null,
+							'Find a Show.....'
+						),
+						_react2.default.createElement('input', {
+							type: 'text',
+							placeholder: 'title or description',
+							defaultValue: this.state.searchText,
+							onChange: function onChange(e) {
+								_this.updateSearchText(e);
+							}
+						}),
+						this.state.searchText.length === 0 ? null : _react2.default.createElement(
+							'h2',
+							null,
+							'Search results for ',
+							this.state.searchText,
+							':'
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'shows' },
+						_data2.default.shows.filter(function (show) {
+							var searchTerms = _this.state.searchText.toLowerCase().split(" ");
+							// let showInfo = `${show.title} ${show.description}`.toLowerCase();
+							if (searchTerms.every(function (term) {
+								return (show.title + ' ' + show.description).toLowerCase().indexOf(term) >= 0;
+							})) {
+								return show;
+							}
+						}).sort(function (a, b) {
+							if (a.title < b.title) {
+								return -1;
+							}
+							if (a.title > b.title) {
+								return 1;
+							}
+							return 0;
+						}).map(function (show) {
+							return _react2.default.createElement(_ShowCard2.default, { key: show.imdbID, show: show });
+						})
+					)
+				)
+			);
+		}
+	});
 
 	module.exports = Search;
 
