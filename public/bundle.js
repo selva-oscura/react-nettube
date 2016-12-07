@@ -25272,6 +25272,11 @@
 						{ className: 'search-container' },
 						_react2.default.createElement(
 							'h2',
+							{ className: 'brand' },
+							'Bash Videos'
+						),
+						_react2.default.createElement(
+							'h2',
 							null,
 							'Find a Show.....'
 						),
