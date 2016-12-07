@@ -29,6 +29,13 @@ describe('<Search />', () => {
 	it('should render as many shows as there are data for', () => {
 		const wrapper = shallow(<Search />);
 		expect(wrapper.find(ShowCard).length).to.equal(shows.length);
+	});
+	it('should filter correctly given new state ', () => {
+		const wrapper = mount(<Search />);
+		const input = wrapper.find('.search-input');
+		input.node.value="congress";
+		input.simulate('change')
+		expect(wrapper.state('searchText')).to.equal("congress");
 	})
 }); 
 
