@@ -6,7 +6,7 @@ const Search = React.createClass({
 	getInitialState(){
 		return {
 			searchText: "",
-			searchTerms: ["house"],
+			searchTerms: [""],
 		}
 	},
 	updateSearchText(e){
