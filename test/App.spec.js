@@ -22,6 +22,9 @@ import {shows} from '../public/data';
 
 describe('<Search />', () => {
 	it('should render the brand', () => {
+		const wrapper = shallow(<Search />);
+		console.log(wrapper.debug());
+		expect(wrapper.contains(<h2 className='brand'>Bash Videos</h2>)).to.be.true;
 	});
 }); 
 
