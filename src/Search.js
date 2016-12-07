@@ -15,6 +15,9 @@ const Search = React.createClass({
 			searchTerms: e.target.value.toLowerCase().split(" "),
 		});
 	},
+	randomUnusedFunctionToSeeMoreUncoveredLines(){
+		console.log('lol');
+	},
 	render(){
 		return (
 		  <div className='app-container'>
