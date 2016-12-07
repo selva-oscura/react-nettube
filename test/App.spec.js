@@ -2,18 +2,28 @@
 
 import { expect } from 'chai';
 import React from 'react';
+import Search from '../src/Search';
+// import ShowCard from '../src/ShowCard';
+import { shallow, mount } from 'enzyme';
+import {shows} from '../public/data';
+
+// describe('<Search />', () => {
+// 	it('should pass ', () => {
+// 		expect(1 + 1 ===2).to.be.true;
+// 	});
+// 	xit('should pass ', () => {
+// 		expect(1 * 1 ===3).to.be.true;
+// 	});
+
+// 	xit('should pass ', () => {
+// 		expect(1 + 1 ===2).to.be.true;
+// 	});
+// }); 
 
 describe('<Search />', () => {
-	it('should pass ', () => {
-		expect(1 + 1 ===2).to.be.true;
-	});
-	xit('should pass ', () => {
-		expect(1 * 1 ===3).to.be.true;
-	});
-
-	xit('should pass ', () => {
-		expect(1 + 1 ===2).to.be.true;
+	it('should render the brand', () => {
 	});
 }); 
+
 
 
