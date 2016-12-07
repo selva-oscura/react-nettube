@@ -20,6 +20,7 @@ const Search = React.createClass({
 		  <div className='app-container'>
 		  	<div className='container'>
 		  		<div className='search-container'>
+		  			<h2 className='brand'>Bash Videos</h2>
 						<h2>Find a Show.....</h2>
 						<input 
 							type="text" 
