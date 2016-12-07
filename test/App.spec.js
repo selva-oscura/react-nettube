@@ -36,6 +36,8 @@ describe('<Search />', () => {
 		input.node.value="congress";
 		input.simulate('change')
 		expect(wrapper.state('searchText')).to.equal("congress");
-	})
+		expect(wrapper.find('.show').length).to.equal(1);
+	});
 }); 
+
 
