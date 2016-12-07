@@ -25,6 +25,7 @@ const Search = React.createClass({
 						<input 
 							type="text" 
 							placeholder="title or description"
+							className="search-input" 
 							defaultValue={this.state.searchText}
 							onChange={(e) => {
 								this.updateSearchText(e)
