@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ShowCard = (props) => (
-	<a href="">
+	<a href={`https://www.imdb.com/title/${props.show.imdbID}`} target="new">
 		<div className='show-card' key={props.show.imdbID}>
 			<img className='show-card-img' src={`./public/img/posters/${props.show.poster}`} />
 			<div className='show-card-text' key={props.show.imdbID}>
