@@ -25249,7 +25249,7 @@
 		getInitialState: function getInitialState() {
 			return {
 				searchText: "",
-				searchTerms: []
+				searchTerms: [""]
 			};
 		},
 		updateSearchText: function updateSearchText(e) {
@@ -25257,6 +25257,9 @@
 				searchText: e.target.value,
 				searchTerms: e.target.value.toLowerCase().split(" ")
 			});
+		},
+		randomUnusedFunctionToSeeMoreUncoveredLines: function randomUnusedFunctionToSeeMoreUncoveredLines() {
+			console.log('lol');
 		},
 		render: function render() {
 			var _this = this;
@@ -25283,10 +25286,9 @@
 						_react2.default.createElement('input', {
 							type: 'text',
 							placeholder: 'title or description',
+							className: 'search-input',
 							defaultValue: this.state.searchText,
-							onChange: function onChange(e) {
-								_this.updateSearchText(e);
-							}
+							onChange: this.updateSearchText
 						}),
 						this.state.searchText.length === 0 ? _react2.default.createElement(
 							'h2',
@@ -25342,26 +25344,30 @@
 
 	var ShowCard = function ShowCard(props) {
 		return _react2.default.createElement(
-			'div',
-			{ className: 'show', key: props.show.imdbID },
-			_react2.default.createElement('img', { className: 'show-card-img', src: './public/img/posters/' + props.show.poster }),
+			'a',
+			{ href: 'https://www.imdb.com/title/' + props.show.imdbID, target: 'new' },
 			_react2.default.createElement(
 				'div',
-				{ className: 'show-card-text', key: props.show.imdbID },
+				{ className: 'show-card', key: props.show.imdbID },
+				_react2.default.createElement('img', { className: 'show-card-img', src: './public/img/posters/' + props.show.poster }),
 				_react2.default.createElement(
-					'h3',
-					{ className: 'show-card-title' },
-					props.show.title
-				),
-				_react2.default.createElement(
-					'h4',
-					{ className: 'show-card-year' },
-					props.show.year
-				),
-				_react2.default.createElement(
-					'p',
-					{ className: 'show-card-description' },
-					props.show.description
+					'div',
+					{ className: 'show-card-text', key: props.show.imdbID },
+					_react2.default.createElement(
+						'h3',
+						{ className: 'show-card-title' },
+						props.show.title
+					),
+					_react2.default.createElement(
+						'h4',
+						{ className: 'show-card-year' },
+						props.show.year
+					),
+					_react2.default.createElement(
+						'p',
+						{ className: 'show-card-description' },
+						props.show.description
+					)
 				)
 			)
 		);
