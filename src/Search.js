@@ -30,9 +30,7 @@ const Search = React.createClass({
 							placeholder="title or description"
 							className="search-input" 
 							defaultValue={this.state.searchText}
-							onChange={(e) => {
-								this.updateSearchText(e)
-							}}
+							onChange={this.updateSearchText}
 						/>
 						{ this.state.searchText.length===0 ? <h2>Showing all Shows</h2> : <h2>Search results for {this.state.searchText}:</h2> }
 		  		</div>
