@@ -154,7 +154,6 @@ a > .show-card {
   margin-bottom: inherit;;
   border: none;
   border-radius: inherit;
-
 }
 
 .show-card {
@@ -166,6 +165,11 @@ a > .show-card {
   padding-bottom: 19.8%;
   overflow: hidden;
   margin-bottom: 3%;
+  transition: all 1s;
+}
+
+.show-card:hover {
+  background-color: rgba(255,255,255, .5);
 }
 
 .show-card-img {
@@ -177,7 +181,7 @@ a > .show-card {
   display: block;
   float: right;
   width: 52%;
-/*  overflow-y: scroll;*/
+  /*overflow-y: scroll;*/
 }
 
 .show-card-title {
